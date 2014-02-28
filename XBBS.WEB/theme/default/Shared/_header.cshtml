@@ -1,0 +1,65 @@
+﻿@helper NavActive(string txt, string action, string controler)
+{
+    if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == controler.ToUpper() && ViewContext.RouteData.Values["action"].ToString().ToUpper() == action.ToUpper())
+    {
+        <li class="active"> @Html.ActionLink(txt, action, controler)</li>
+    }
+    else
+    {
+        <li> @Html.ActionLink(txt, action, controler)</li>
+    }
+}
+<div id="navbar-wrapper">
+    @*<?php if($this->config->item('static')=='default'){?>navbar-inverse<?php } else{?>navbar-default<?php }?> navbar-fixed-top*@
+    <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><span class='green'>BBS</span></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @NavActive("首页", "Index", "Home")
+                    @NavActive("节点", "section", "home")
+                    @NavActive("会员", "user", "home")
+                    @NavActive("发表", "add", "forum")
+
+                </ul>
+                <form class="form-inline navbar-left" style="margin-top: 8px; margin-left: 5px;" role="search" action="http://www.google.com/search" method="get" target="_blank">
+                    <div class="form-group" style="width:62%">
+                        <input type="text" class="form-control" name="q" placeholder="输入关键字回车"><input type=hidden name=sitesearch value="<?php echo base_url()?>">
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    @{
+                        if (ViewBag.User != null)
+                        {
+                            <li>
+                                <a href="/User/Info/@ViewBag.User.Uid">@ViewBag.User.UserName</a>
+                            </li>
+                            <li><a href="/settings">个人设置</a></li>
+                            //是否是管理员
+                            if (HttpContext.Current.User.Identity.Name == "admin")
+                            {
+                                <li>@Html.ActionLink("管理后台", "Dashboard", "admin")</li>
+                            }
+                            <li> @Html.ActionLink("退出", "LoginOut", "User", null, new { data_method = "delete", rel = "nofollow" })</li>
+                        }
+                        else
+                        {
+                            <li> @Html.ActionLink("注册", "reg", "user")</li>
+                            <li> @Html.ActionLink("登入", "login", "user")</li>
+                            <li><a style="padding-top: 11px;overflow:hidden;" href="#"><img src="@Url.Content("~/static/common/images/qq_login.png")" /></a></li>
+                        }
+                    }
+                </ul>
+            </div><!--/.nav-collapse -->
+
+        </div>
+    </div>
+
+</div>

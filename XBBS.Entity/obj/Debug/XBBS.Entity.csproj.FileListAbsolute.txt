@@ -1,0 +1,5 @@
+F:\SourceCode\XBBS\XBBS.Entity\bin\Debug\XBBS.Entity.dll
+F:\SourceCode\XBBS\XBBS.Entity\bin\Debug\XBBS.Entity.pdb
+F:\SourceCode\XBBS\XBBS.Entity\obj\Debug\XBBS.Entity.csprojResolveAssemblyReference.cache
+F:\SourceCode\XBBS\XBBS.Entity\obj\Debug\XBBS.Entity.dll
+F:\SourceCode\XBBS\XBBS.Entity\obj\Debug\XBBS.Entity.pdb

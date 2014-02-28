@@ -1,0 +1,38 @@
+﻿
+<footer id='footer'>
+    <div class='container' id='footer-main'>
+        <div class="pull-left">
+            <ul class='page-links list-inline'>
+                @{
+                    if (ViewBag.Pages != null && ViewBag.Pages.Count > 0)
+                    {
+                        int i = 0;
+                        foreach (var key in ViewBag.Pages)
+                        {
+                            if (!string.IsNullOrEmpty(key.Url))
+                            {
+                                <li><a href="@key.Url" class="dark nav" target=_blank>@key.Title</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/page/index/@key.Pid" class="dark nav">@key.Title</a></li>
+                            }
+                            if (i != 10)
+                            {
+                                <li class='snow'>·</li>
+                            }
+                            i++;
+                        }
+                    }
+                }
+
+            </ul>
+            <p>@ViewBag.Setting["site_name"]  @ViewBag.Setting["site_stats"]</p>
+            <p>
+                Powered by <a href="<?php echo $this->config->item('sys_url');?>" class="text-muted" target="_blank">Jexus</a>
+                v1.0 2013-2014 Some rights reserved  
+            </p>
+        </div>
+    </div>
+</footer>
+<script src="http://www.blacktie.co/demo/pratt/assets/js/bootstrap.js"></script>

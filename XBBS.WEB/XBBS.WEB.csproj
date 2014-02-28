@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{08B69DA2-E4B6-45AA-A343-ED8F1A097088}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XBBS.WEB</RootNamespace>
+    <AssemblyName>XBBS.WEB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RootController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Global.asax" />
+    <Content Include="plugins\kindeditor\keset.js" />
+    <Content Include="plugins\kindeditor\keset2.js" />
+    <Content Include="plugins\kindeditor\keupload.js" />
+    <Content Include="plugins\kindeditor\kindeditor-min.js" />
+    <Content Include="plugins\kindeditor\lang\ar.js" />
+    <Content Include="plugins\kindeditor\lang\en.js" />
+    <Content Include="plugins\kindeditor\lang\zh_CN.js" />
+    <Content Include="plugins\kindeditor\plugins\anchor\anchor.js" />
+    <Content Include="plugins\kindeditor\plugins\autoheight\autoheight.js" />
+    <Content Include="plugins\kindeditor\plugins\baidumap\baidumap.js" />
+    <Content Include="plugins\kindeditor\plugins\baidumap\index.html" />
+    <Content Include="plugins\kindeditor\plugins\baidumap\map.html" />
+    <Content Include="plugins\kindeditor\plugins\clearhtml\clearhtml.js" />
+    <Content Include="plugins\kindeditor\plugins\code\code.js" />
+    <Content Include="plugins\kindeditor\plugins\code\prettify.css" />
+    <Content Include="plugins\kindeditor\plugins\code\prettify.js" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\emoticons.js" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\0.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\1.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\10.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\11.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\12.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\13.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\14.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\15.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\16.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\17.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\18.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\19.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\2.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\20.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\21.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\22.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\23.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\24.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\25.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\26.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\27.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\28.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\29.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\3.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\30.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\31.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\32.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\33.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\34.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\35.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\36.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\37.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\38.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\39.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\4.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\40.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\41.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\42.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\43.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\44.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\45.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\5.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\6.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\7.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\8.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\9.gif" />
+    <Content Include="plugins\kindeditor\plugins\emoticons\images\static.gif" />
+    <Content Include="plugins\kindeditor\plugins\filemanager\filemanager.js" />
+    <Content Include="plugins\kindeditor\plugins\filemanager\images\file-16.gif" />
+    <Content Include="plugins\kindeditor\plugins\filemanager\images\file-64.gif" />
+    <Content Include="plugins\kindeditor\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="plugins\kindeditor\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="plugins\kindeditor\plugins\filemanager\images\go-up.gif" />
+    <Content Include="plugins\kindeditor\plugins\flash\flash.js" />
+    <Content Include="plugins\kindeditor\plugins\image\image.js" />
+    <Content Include="plugins\kindeditor\plugins\image\images\align_left.gif" />
+    <Content Include="plugins\kindeditor\plugins\image\images\align_right.gif" />
+    <Content Include="plugins\kindeditor\plugins\image\images\align_top.gif" />
+    <Content Include="plugins\kindeditor\plugins\image\images\refresh.png" />
+    <Content Include="plugins\kindeditor\plugins\insertfile\insertfile.js" />
+    <Content Include="plugins\kindeditor\plugins\lineheight\lineheight.js" />
+    <Content Include="plugins\kindeditor\plugins\link\link.js" />
+    <Content Include="plugins\kindeditor\plugins\map\map.html" />
+    <Content Include="plugins\kindeditor\plugins\map\map.js" />
+    <Content Include="plugins\kindeditor\plugins\media\media.js" />
+    <Content Include="plugins\kindeditor\plugins\multiimage\images\image.png" />
+    <Content Include="plugins\kindeditor\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="plugins\kindeditor\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="plugins\kindeditor\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="plugins\kindeditor\plugins\multiimage\multiimage.js" />
+    <Content Include="plugins\kindeditor\plugins\pagebreak\pagebreak.js" />
+    <Content Include="plugins\kindeditor\plugins\plainpaste\plainpaste.js" />
+    <Content Include="plugins\kindeditor\plugins\preview\preview.js" />
+    <Content Include="plugins\kindeditor\plugins\quickformat\quickformat.js" />
+    <Content Include="plugins\kindeditor\plugins\table\table.js" />
+    <Content Include="plugins\kindeditor\plugins\template\html\1.html" />
+    <Content Include="plugins\kindeditor\plugins\template\html\2.html" />
+    <Content Include="plugins\kindeditor\plugins\template\html\3.html" />
+    <Content Include="plugins\kindeditor\plugins\template\template.js" />
+    <Content Include="plugins\kindeditor\plugins\wordpaste\wordpaste.js" />
+    <Content Include="plugins\kindeditor\themes\common\anchor.gif" />
+    <Content Include="plugins\kindeditor\themes\common\blank.gif" />
+    <Content Include="plugins\kindeditor\themes\common\flash.gif" />
+    <Content Include="plugins\kindeditor\themes\common\loading.gif" />
+    <Content Include="plugins\kindeditor\themes\common\media.gif" />
+    <Content Include="plugins\kindeditor\themes\common\rm.gif" />
+    <Content Include="plugins\kindeditor\themes\default\background.png" />
+    <Content Include="plugins\kindeditor\themes\default\default.css" />
+    <Content Include="plugins\kindeditor\themes\default\default.png" />
+    <Content Include="plugins\kindeditor\themes\simple\simple.css" />
+    <Content Include="static\common\css\bootstrap.min.css" />
+    <Content Include="static\common\css\mystyle.css" />
+    <Content Include="static\common\images\add_uploads.png" />
+    <Content Include="static\common\images\bg.png" />
+    <Content Include="static\common\images\donations.jpg" />
+    <Content Include="static\common\images\dot.png" />
+    <Content Include="static\common\images\dot_orange.png" />
+    <Content Include="static\common\images\qq_login.png" />
+    <Content Include="static\common\images\reply_button.png" />
+    <Content Include="static\common\images\rss.png" />
+    <Content Include="static\common\images\section.png" />
+    <Content Include="static\common\images\tag.gif" />
+    <Content Include="static\common\js\ajaxfileupload.js" />
+    <Content Include="static\common\js\fileupload.js" />
+    <Content Include="static\common\js\global.js" />
+    <Content Include="static\common\js\jquery-1.10.2.min.js" />
+    <Content Include="static\common\js\jquery.upload.js" />
+    <Content Include="static\common\js\jquery.validate.min.js" />
+    <Content Include="static\common\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="static\common\js\main.js" />
+    <Content Include="static\common\js\qiniu.js" />
+    <Content Include="static\common\js\topic.js" />
+    <Content Include="uploads\avatar\avatar_large.jpg" />
+    <Content Include="uploads\avatar\avatar_small.jpg" />
+    <Content Include="uploads\avatar\default.jpg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="uploads\avatar\1\01\" />
+    <Folder Include="uploads\avatar\2\02\" />
+    <Folder Include="uploads\avatar\tmp\" />
+    <Folder Include="uploads\files\" />
+    <Folder Include="uploads\file\" />
+    <Folder Include="uploads\image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="plugins\kindeditor\php\demo.php" />
+    <Content Include="plugins\kindeditor\php\file_manager_json.php" />
+    <Content Include="plugins\kindeditor\php\JSON.php" />
+    <Content Include="plugins\kindeditor\php\upload_json.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Home\index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_footer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_header-meta.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XBBS.Core\XBBS.Core.csproj">
+      <Project>{bc7712cf-dbf5-4e21-9aaa-1d86065fa96c}</Project>
+      <Name>XBBS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XBBS.DataProvider\XBBS.DataProvider.csproj">
+      <Project>{9556cf8f-10e0-471b-92dc-69852f07861b}</Project>
+      <Name>XBBS.DataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XBBS.Entity\XBBS.Models.csproj">
+      <Project>{fdd33416-7e48-4cb2-8799-9c90daab8fa5}</Project>
+      <Name>XBBS.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right-login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right_tags.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right_ad.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\User\reg.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\User\login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Home\user.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Forum\add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Home\section.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right_new_users.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right_new_forums.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\User\settings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Settings\avatar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Settings\profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\admin\dashboard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\admin\_footer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\admin\_header-meta.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\admin\_header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\admin\_leftbar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\User\info.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Forum\topic.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right-cateinfo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right-cates.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Shared\_right-related_forum.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>40912</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:40707/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

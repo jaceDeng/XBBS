@@ -1,0 +1,114 @@
+﻿@model XBBS.Models.User
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='登入' name='description'>
+    <meta charset='UTF-8'>
+    <meta content='True' name='HandheldFriendly'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <title>登入 - @ViewBag.Setting["site_name"]</title>
+    @Html.Partial("_header-meta")
+
+</head>
+<body id="startbbs">
+    @Html.Partial("_header")
+    <div id="wrap">
+        <div class="container" id="page-main">
+            <div class="row">
+                <div class='col-xs-12 col-sm-6 col-md-8'>
+
+                    <div class='box'>
+                        <div class='cell'><a href="<?php echo site_url()?>" class="startbbs">@ViewBag.Setting["site_name"]</a> <span class="chevron">&nbsp;›&nbsp;</span> 登入</div>
+                        <div class='inner'>
+                            @{
+                                if (ViewData.ModelState.Count > 0)
+                                {
+                                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                                    foreach (var item in ViewData.ModelState)
+                                    {
+                                        foreach (var error in item.Value.Errors)
+                                        {
+                                            sb.Append(error.ErrorMessage);
+
+                                        }
+                                    }
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        @sb.ToString()
+                                    </div>
+                                    <script type="text/javascript">
+                                        window.setTimeout(function () {
+                                            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                                                if ($(this))
+                                                    $(this).remove();
+                                            });
+                                        }, 5000);
+                                    </script>
+                                }
+                            }
+                            @using (Html.BeginForm("Login", "User", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "form-horizontal", novalidate = "novalidate" }))
+                            {
+                                <div style="margin:0;padding:0;display:inline">
+                                    <input name="utf8" type="hidden" value="&#x2713;" />
+                                    <input name="authenticity_token" type="hidden" value="lr/g+0G/gLUzIhYpJwhtULW5aftcf8soZOHMznkxxT0=" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="user_nickname">用户名</label>
+                                    <div class="col-sm-5">
+                                        <input autofocus="autofocus" value="@ViewData["UserName"]" class="form-control" id="user_nickname" name="username" size="50" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="user_password">密码</label>
+                                    <div class="col-sm-5">
+                                        <input class="form-control" value="@ViewData["Password"]" id="user_password" name="password" size="50" type="password" />
+                                    </div>
+                                </div>
+                                if (ViewBag.Setting["show_captcha"] == "on")
+                                {
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" for="captcha_code">验证码</label>
+                                        <div class="col-sm-4">
+                                            <input class="form-control" id="captcha_code" name="captcha_code" size="50" type="text" value="" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <a href="javascript:reloadcode();" title="更换一张验证码图片"><img src="/User/CaptchaCode?w=80&h=40" name="checkcodeimg" id="checkCodeImg" border="0" /></a> <a href="javascript:reloadcode();">换一张</a>
+                                        </div>
+                                    </div>
+                                    <script language="javascript">
+                                        //刷新图片
+                                        function reloadcode() {//刷新验证码函数
+                                            var verify = document.getElementById('checkCodeImg');
+                                            verify.setAttribute('src', '/User/CaptchaCode?w=80&h=40&' + Math.random());
+                                        }
+                                    </script>
+
+                                }
+                                <div class='hide'>
+                                    <input name="user[remember_me]" type="hidden" value="0" />
+                                    <input checked="checked" id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" />
+                                </div>
+                                <div class='form-group'>
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button type="submit" name="commit" class="btn btn-primary">登入</button>
+                                        <a href="<?php echo site_url('user/findpwd');?>" class="btn btn-default" role="button">找回密码</a>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+
+                </div>
+                <div class='col-xs-12 col-sm-6 col-md-4' id='Rightbar'>
+                    @Html.Partial("_right-login")
+                    @Html.Partial("_right_ad")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footer")
+</body>
+</html>

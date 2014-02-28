@@ -1,0 +1,89 @@
+﻿@{
+    if (ViewBag.User != null)
+    {
+        <div class='box'>
+            <div class='cell'>
+                <table>
+                    <tr>
+                        <td valign='top' width='100'>
+                            <a href="/user/info/@ViewBag.User.Uid" class="profile_link" title="@ViewBag.User.UserName">
+                                <img alt="@ViewBag.User.UserName large avatar" class="large_avatar" src="@Url.Content("~/uploads/avatar/avatar_large.jpg")" />
+                            </a>
+                        </td>
+                        <td valign='top' width='10'></td>
+                        <td valign='left' width='auto'>
+                            <div class='profile-link'><a href="/user/info/@ViewBag.User.Uid" class="startbbs profile_link" title="@ViewBag.User.UserName">@ViewBag.User.UserName</a>(@ViewData["GroupName"])</div>
+                            <div class='signature'></div>
+                        </td>
+                    </tr>
+                </table>
+                <div class='sep10'></div>
+                <table width='100%'>
+                    <tr>
+                        <td align='center' class='with_separator' width='34%'>
+                            <a href="<?php echo site_url('favorites');?>" class="dark" style="display: block;">
+                                <span class='bigger'>
+                                    <?php echo $users['favorites']?>
+                                </span>
+                                <div class='sep3'></div>
+                                <span class='gray'>话题收藏</span>
+                            </a>
+                        </td>
+                        <td align='center' width='33%'>
+                            <a href="<?php echo site_url('follow');?>" class="dark" style="display: block;">
+                                <span class='bigger'><?php echo $users['follows']?></span>
+                                <div class='sep3'></div>
+                                <span class='gray'>特别关注</span>
+                            </a>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            @{     //查看头像是否存在啊
+        if (string.IsNullOrEmpty(ViewBag.User.Avatar))
+        {
+            <text> <div class='cell'>
+                    <div class='text-muted alert alert-warn' style='margin-bottom: 0;'>
+                        头像不够个性？
+                        <a class='startbbs' href='@Url.Action("avatar","settings")'>立刻上传 →</a>
+                    </div>
+                </div></text>
+        }
+            }
+            <div class='inner text-muted'>
+                @{//是否存在消息
+        if (false)
+        {
+            <img align="top" alt="Dot_orange" class="icon" src="<?php echo base_url('static/common/images/dot_orange.png');?>" />
+                    <a href="<?php echo site_url('notifications');?>"><?php echo $users['notices']?> 条未读提醒</a>
+        }
+        else
+        {
+            @:暂无提醒
+
+        }}
+            </div>
+        </div>
+
+    }
+    else
+    {
+
+        <div class='box'>
+            <div class='cell'>
+                @ViewBag.Setting["site_name"] — @ViewBag.Setting["short_intro"]
+            </div>
+            <div class='inner'>
+                <div class='sep5'></div>
+                <div class='center'>
+                    @Html.ActionLink("现在注册", "reg", "user", null, new { @class = "btn btn-default" })
+                    <div class='sep5'></div>
+                    <div class='sep10'></div>
+                    已注册用户请 @Html.ActionLink("登入", "login", "user", null, new { @class = "startbbs" })
+                </div>
+            </div>
+        </div>
+
+    }
+}
