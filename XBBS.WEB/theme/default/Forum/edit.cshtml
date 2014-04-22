@@ -1,0 +1,166 @@
+@model XBBS.Models.Forums
+@functions{
+    public bool IsParent(int cid)
+    {
+        foreach (var item in ViewBag.Category)
+        {
+            if (item.PId == cid)
+                return true;
+        }
+        return false;
+    }
+
+    public List<XBBS.Models.Category> GetCatList(int pid)
+    {
+        List<XBBS.Models.Category> list = new List<XBBS.Models.Category>();
+        foreach (var item in ViewBag.Category)
+        {
+            if (item.PId == pid)
+            {
+                list.Add(item);
+            }
+        }
+        return list;
+
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='建议与想法 - ' name='description'>
+    <meta charset='UTF-8'>
+    <meta content='True' name='HandheldFriendly'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <title>@ViewData["Title"] - @ViewBag.Setting["site_name"]</title>
+    @Html.Partial("_header-meta")
+    <script charset="utf-8" src="@Url.Content("~/plugins/kindeditor/kindeditor-min.js")"></script>
+    <script charset="utf-8" src="@Url.Content("~/plugins/kindeditor/lang/zh_CN.js")"></script>
+    @{
+        if (ViewBag.Setting["show_editor"] == "on")
+        {
+            <script charset="utf-8" src="@Url.Content("~/plugins/kindeditor/keset.js")"></script>
+        }
+        else if (ViewBag.Setting["storage_set"] == "local")
+        {
+            <link rel="stylesheet" href="@Url.Content("~/plugins/kindeditor/themes/default/default.css")" />
+            <script charset="utf-8" src="@Url.Content("~/plugins/kindeditor/keupload.js")"></script>
+        }
+        else
+        {
+            <script src="@Url.Content("~/static/common/js/jquery.upload.js")" type="text/javascript"></script>
+            <script src="@Url.Content("~/static/common/js/qiniu.js")" type="text/javascript"></script>
+        }
+    }
+</head>
+<body id="startbbs">
+    @Html.Partial("_header")
+    <div id="wrap">
+        <div class="container" id="page-main">
+            <div class="row">
+                <div class='col-xs-12 col-sm-6 col-md-8'>
+
+                    <div class='box'>
+                        <div class='box-header'>
+                            编辑话题 @Model.Title
+                        </div>
+                        <div class='inner row'>
+                            <!--<div class='alert alert-info'>如果标题已经包含你想说的话，内容可以留空。</div>-->
+                            <form accept-charset="UTF-8" action="/forum/edit/@Model.FId" class="simple_form form-vertical" id="new_topic" method="post" novalidate="novalidate">
+                                <div style="margin:0;padding:0;display:inline">
+                                    <input name="utf8" type="hidden" value="&#x2713;" />
+                                  
+                                </div>
+                                <a name='new_topic'></a>
+                                <div class="form-group string required">
+                                    <div class="col-md-6">
+                                        <label class="string required control-label" for="topic_title">标题</label>
+                                        <input class="form-control" id="topic_title" maxlength="100" name="title" size="60" type="text" value="@Model.Title" />
+                                    </div>
+                                    <span class="help-inline red"><?php echo form_error('title');?></span>
+                                </div>
+
+                                <div class="form-group optional" style="width:300px; margin-left: 15px; margin-top: 10px;">
+                                    <label for="category">版块</label>
+                                    <select name="cid" id="cid" class="form-control">
+                                        @{
+                                            var cat = XBBS.DataProvider.ForumDataProvider.GetCategory(Model.Cid);
+                                            if (true)
+                                            {
+
+                                                <option selected="selected" value="@cat.CId">@cat.CName (已选)</option>
+                                            }
+                                            else
+                                            {
+                                                <option selected="selected" value="@cat.CId">
+                                                    @cat.CName (已选)
+                                                </option>
+                                            }
+                                            foreach (var item in ViewBag.Category)
+                                            {
+                                                if (IsParent((int)item.CId))
+                                                {
+                                                    <optgroup label="&nbsp;&nbsp;@item.CName" />
+                                                    foreach (var c in GetCatList((int)item.CId))
+                                                    {
+                                                        <option value="@c.CId">
+                                                            @c.CName
+                                                        </option>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                    <span class="help-inline red"><?php echo form_error('cid');?></span>
+                                </div>
+                                <!--<div id='preview-widget'>
+                                <a href="javascript:void(0);" class="action_label cancel_preview current_label" data-ref="topic_content">编辑</a>
+                                </div>-->
+                                <ul class="nav nav-tabs" style="margin-left: 15px; margin-right: 15px;border-bottom: 0px solid #999;height:20px">
+                                    <li class="active"><a style="background-color: #eee;" href="#">编辑区</a></li>
+                                    @{
+                                        if (ViewBag.Setting["show_editor"] == "off")
+                                        {
+                                            <li class="pull-right">
+                                                @{   if (ViewBag.Setting["storage_set"] == "local")
+                                                   {
+                                                    <span id='upload-tip' class="btn btn-default" value="图片/附件">上传图片</span>
+                                                   }
+
+                                                   else
+                                                   {
+                                                    <input id="upload_tip" type="button" value="图片/附件" class="btn btn-default">
+                                        <!--	<input type="button" onclick="doUpload()" value="图片/附件"  class="btn btn-default">-->
+
+                                                   }
+                                                }
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                                <div class="form-group text optional">
+                                    <div class="col-md-12" id="textContain">
+                                        <textarea class="form-control" id="topic_content" name="content" placeholder="话题内容" rows="10">
+                                            @Model.Content
+                                        </textarea>
+                                        <span class="help-inline red"><?php echo form_error('content');?></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input class="btn btn-primary btn-inverse" data-disable-with="正在提交" name="commit" type="submit" value="修改" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class='col-xs-12 col-sm-6 col-md-4' id='Rightbar'>
+                    @Html.Partial("_right-login")
+                    @Html.Partial("_right_ad")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footer")
+</body>
+</html>

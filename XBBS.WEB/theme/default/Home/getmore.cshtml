@@ -1,0 +1,57 @@
+@{
+    if (ViewBag.ForumList != null)
+    {
+        foreach (var f in (List<XBBS.Models.Forums>)ViewBag.ForumList)
+        {
+            XBBS.Models.User user = XBBS.DataProvider.AccountDataProvider.GetUser((int)f.Uid);
+            <div class="cell topic">
+                <div class="avatar pull-left">
+                    <a href="/user/info/@user.Uid" class="profile_link" title="@user.Uid">
+                        @{  if (!string.IsNullOrEmpty(user.Avatar))
+  {
+    <img alt="@user.UserName medium avatar" class="medium_avatar" src="@Url.Content("~/" + user.Avatar)/default.jpg" />
+  }
+  else
+  {
+                            <img alt="@user.UserName medium avatar" class="medium_avatar" src="@Url.Content("~/uploads/avatar/default.jpg")" />
+                          }
+                        }
+                    </a>
+                </div>
+                <div class='item_title'>
+                    <div class='pull-right'>
+                        <div class='badge badge-info'><a href="<?php echo site_url($v['view_url'].'#reply');?>">@f.Comments</a></div>
+                    </div>
+                    <h2 class='topic_title'>
+                        <a href="/topic/@f.FId" class="startbbs topic">@f.Title</a>
+                        @{ if (f.IsTop == 1)
+                         {<span class="badge badge-info">置顶</span>} }
+                    </h2>
+                    <div class='topic-meta'>
+                        <a href="<?php echo site_url($v['flist_url']);?>" class="node">@XBBS.DataProvider.ForumDataProvider.GetCategory(f.Cid).CName</a>
+                        <span class='text-muted'>•</span>
+                        <a href="/user/info/@f.Uid" class="dark startbbs profile_link" title="<?php echo $v['username']?>"> @XBBS.DataProvider.AccountDataProvider.GetUser((int)f.Uid).UserName</a>
+                        <span class='text-muted'>•</span>
+                        @*有好的日期转换*@
+                        @XBBS.Core.Utils.FriendlyDate(f.UpdateTime.Value)
+                        <span class='text-muted'>•</span>
+                        @{
+            if (f.Ruid != null)
+            {
+                @:最后回复来自
+                            <a href="/user/info/@f.Ruid" class="startbbs profile_link" title="<?php echo $v['rname']?>">rname</a>
+
+            }
+            else
+            {
+                @:暂无回复
+
+            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}

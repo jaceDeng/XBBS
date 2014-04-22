@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='' name='description'>
+    <meta charset='UTF-8'>
+    <meta content='True' name='HandheldFriendly'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <title>@ViewData["TagTitle"] - @ViewBag.Setting["site_name"]</title>
+    @Html.Partial("_header-meta")
+</head>
+<body id="startbbs">
+    <a id="top" name="top"></a>
+    @Html.Partial("_header")
+    <div id="wrap">
+        <div class="container" id="page-main">
+            <div class="row">
+                <div class='col-xs-12 col-sm-6 col-md-8'>
+
+                    <div class='box fix_cell'>
+                        <div class='cell'><a href="<?php echo site_url()?>" class="startbbs">@ViewBag.Setting["site_name"]</a> <span class="chevron">&nbsp;›&nbsp;</span>标签: #@ViewData["TagTitle"] (0)</div>
+                        @{
+                            if (ViewBag.ForumList != null)
+                            {
+                                foreach (var f in (List<XBBS.Models.Forums>)ViewBag.ForumList)
+                                {
+                                    XBBS.Models.Category cat = XBBS.DataProvider.ForumDataProvider.GetCategory(f.Cid);
+                                    XBBS.Models.User u = XBBS.DataProvider.AccountDataProvider.GetUser(f.Uid);
+                                    <div class='admin cell topic'>
+                                        <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                                            <tr>
+                                                <td class='avatar' valign='top'>
+                                                    <a href="/user/info/@f.Uid" class="profile_link" title="@u.UserName">
+                                                        @{
+                                    if (!string.IsNullOrEmpty(u.Avatar))
+                                    {  <img alt="@u.UserName medium avatar" class="medium_avatar" src="@Url.Content(u.Avatar)" />
+                                    }
+                                    else
+                                    {
+                                        <img alt="@u.UserName medium avatar" class="medium_avatar" src="@Url.Content("~/uploads/avatar/default.jpg")" />
+                                    }
+                                                        }
+
+                                                    </a>
+                                                </td>
+                                                <td style='padding-left: 12px' valign='top'>
+                                                    <div class='pull-right'>
+                                                        <div class='badge badge-info'><a href="/topic/@f.FId#reply">@f.Comments</a></div>
+                                                    </div>
+                                                    <div class='sep3'></div>
+                                                    <h2 class='topic_title'>
+                                                        <a href="/topic/@f.FId" class="startbbs topic">@XBBS.Core.Utils.SubString(f.Title, 30)</a>
+                                                        @{ if (f.IsTop == 1)
+                                                         {  <span class="label label-info">置顶</span>}}
+                                                    </h2>
+                                                    <div class='topic-meta'>
+                                                        <a href="/node/@cat.CId" class="node">@cat.CName</a>
+                                                        &nbsp;&nbsp;•&nbsp;&nbsp;
+                                                        <a href="/user/info/@u.Uid" class="dark startbbs profile_link" title="@u.UserName">@u.UserName </a>
+                                                        &nbsp;&nbsp;•&nbsp;&nbsp;
+                                                        @XBBS.Core.Utils.FriendlyDate(f.AddTime.Value)
+                                                        &nbsp;&nbsp;•&nbsp;&nbsp;@{
+                                    if (f.Ruid.HasValue)
+                                    {
+
+
+                                        @:最后回复来自
+                                                            <a href="/user/info/@f.Ruid" class="startbbs profile_link" title="agred">@XBBS.DataProvider.AccountDataProvider.GetUser(f.Ruid.Value).UserName</a>
+                                    } }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class='cell topic'>
+                                    暂无话题
+                                </div>
+                            }
+                        }
+                        <div class='inner'>
+                            <ul class='pager'>
+                                <li class='center'>
+                                    <?php echo $pagination;?>
+                                    <!--<span class='gray'></span>-->
+                                </li>
+                                <!--<li class='next'>
+                                <a href="/go/noticeboard?p=2">下一页 →</a>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class='col-xs-12 col-sm-6 col-md-4' id='Rightbar'>
+
+                    @Html.Partial("_right-login")
+                    @Html.Partial("_right_ad")
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_footer")
+</body>
+</html>
