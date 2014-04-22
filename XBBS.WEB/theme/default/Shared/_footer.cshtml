@@ -1,4 +1,4 @@
-﻿
+
 <footer id='footer'>
     <div class='container' id='footer-main'>
         <div class="pull-left">
@@ -29,7 +29,7 @@
             </ul>
             <p>@ViewBag.Setting["site_name"]  @ViewBag.Setting["site_stats"]</p>
             <p>
-                Powered by <a href="<?php echo $this->config->item('sys_url');?>" class="text-muted" target="_blank">Jexus</a>
+                Powered by <a href="@ViewBag.Setting["sys_url"]" class="text-muted" target="_blank">Jexus</a>
                 v1.0 2013-2014 Some rights reserved  
             </p>
         </div>

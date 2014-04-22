@@ -1,4 +1,4 @@
-﻿@model XBBS.Models.User
+@model XBBS.Models.User
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +34,7 @@
                                     @Html.LabelFor(model => model.UserName, "用户名", new { @class = "col-sm-3 control-label" })
                                     <div class="col-sm-5">
                                         @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" , autofocus = "autofocus" })
-                                        @Html.ValidationMessageFor(mode => mode.UserName, "", new { @class = "help-inline red" })
+                                        @Html.ValidationMessageFor(mode => mode.UserName, "",new { @class = "help-inline red" })
                                     </div>
                                 </div>
                                 <div class="form-group">

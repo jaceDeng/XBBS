@@ -1,4 +1,4 @@
-﻿@{
+@{
     if (ViewBag.User != null)
     {
         <div class='box'>
@@ -6,8 +6,8 @@
                 <table>
                     <tr>
                         <td valign='top' width='100'>
-                            <a href="/user/info/@ViewBag.User.Uid" class="profile_link" title="@ViewBag.User.UserName">
-                                <img alt="@ViewBag.User.UserName large avatar" class="large_avatar" src="@Url.Content("~/uploads/avatar/avatar_large.jpg")" />
+                            <a href="/user/info/@ViewBag.User.Uid" class="profile_link" title="@ViewBag.User.UserName">                                
+                                <img alt="@ViewBag.User.UserName large avatar" class="large_avatar" src="@(ViewBag.User.Avatar )/avatar_large.jpg" />
                             </a>
                         </td>
                         <td valign='top' width='10'></td>

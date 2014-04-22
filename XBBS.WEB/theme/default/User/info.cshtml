@@ -1,7 +1,10 @@
-﻿<!DOCTYPE html>
+@{
+    XBBS.Models.User userinfo = (XBBS.Models.User)ViewBag.UserInfo;
+}
+<!DOCTYPE html>
 <html>
 <head>
-    <meta content='><?php echo $username?> - @ViewBag.Setting["site_name"]' name='description'>
+    <meta content='>@userinfo.Location - @ViewBag.Setting["site_name"]' name='description'>
     <meta charset='UTF-8'>
     <meta content='True' name='HandheldFriendly'>
     <meta content='width=device-width, initial-scale=1.0' name='viewport'>
@@ -19,36 +22,46 @@
                             <table border='0' cellpadding='0' cellspacing='0' width="100%">
                                 <tr>
                                     <td align='center' valign='top' width='73'>
-                                        <?php if($avatar){?>
-                                        <img alt="<?php echo $username?> large avatar" class="large_avatar" style="width:72px; height:72px;" src="<?php echo base_url($big_avatar)?>" />
-                                        <?php } else{?>
-                                        <img alt="<?php echo $username?> large avatar" class="large_avatar" style="width:72px; height:72px;" src="<?php echo base_url('uploads/avatar/default.jpg')?>" />
-                                        <?php }?>
+                                        @{
+                                            if (!string.IsNullOrEmpty(userinfo.Avatar))
+                                            {     <img alt="@userinfo.UserName large avatar" class="large_avatar" style="width:72px; height:72px;" src="@(userinfo.Avatar)/default.jpg" />
+                                            }
+                                            else
+                                            {
+                                                <img alt="@userinfo.UserName large avatar" class="large_avatar" style="width:72px; height:72px;" src="@Url.Content("~/uploads/avatar/default.jpg")" />
+
+                                            }
+                                        }
+
                                     </td>
                                     <td valign='top' width='10'></td>
                                     <td align='left' valign='top' width='auto'>
                                         <div class='pull-right'>
                                             <div class='sep3'></div>
-                                            <?php if($this->session->userdata('uid')){?>
+                                            @{
+                                                if (ViewBag.User != null && ViewBag.User.Uid != userinfo.Uid)
+                                                {
+
                                             <?php if(!$is_followed){?>
-                                            <a href="<?php echo site_url('follow/add/'.$uid);?>" class="btn btn-info btn-sm" data-method="post" rel="nofollow">加入特别关注</a>
+                                                    <a href="/follow/add/@userinfo.Uid" class="btn btn-info btn-sm" data-method="post" rel="nofollow">加入特别关注</a>
                                             <?php }else{?>
-                                            <a href="<?php echo site_url('follow/cancel/'.$uid);?>" class="btn btn-sm btn-warning" data-method="post" rel="nofollow">取消特别关注</a>
+                                                    <a href="/follow/cancel/@userinfo.Uid" class="btn btn-sm btn-warning" data-method="post" rel="nofollow">取消特别关注</a>
                                             <?php }?>
-                                            <?php }?>
+                                                }
+                                            }
                                         </div>
                                         <h2 style='padding: 0px; margin: 0px; font-size: 22px; line-height: 22px;'>
-                                            <?php echo $username?>
+                                            @userinfo.UserName
                                         </h2>
                                         <div class='sep5'></div>
                                         <!--<span class='gray bigger'><?php echo $signature?></span>-->
                                         <div class='sep5'></div>
                                         <span class='snow'>
-                                            <?php echo $username?>
+                                            @userinfo.UserName
                                             第
-                                            <?php echo $uid?>
+                                            @userinfo.Uid
                                             号会员, 加入于
-                                            <?php echo $this->myclass->friendly_date($regtime)?>
+                                            @XBBS.Core.Utils.FriendlyDate(userinfo.Regtime.Value)
                                         </span>
                                         <div class='sep10'></div>
                                         <table border='0' cellpadding='2' cellspacing='0' width='100%'>
@@ -56,8 +69,7 @@
                                                 <td width='50%'>
                                                     <span style='line-height: 16px;'>
                                                         签名:
-                                                        &nbsp;
-                                                        <?php echo $signature?>
+                                                        &nbsp;@userinfo.Signature
                                                     </span>
                                                 </td>
                                             </tr>
@@ -66,7 +78,7 @@
                                                     <span style='line-height: 16px;'>
                                                         个人主页
                                                         &nbsp;
-                                                        <a href="<?php echo $homepage?>" class="startbbs" rel="nofollow external" target="_blank"><?php echo $homepage?></a>
+                                                        <a href="@userinfo.Homepage" class="startbbs" rel="nofollow external" target="_blank">@userinfo.Homepage</a>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -75,7 +87,7 @@
                                                     <span style='line-height: 16px;'>
                                                         所在地:
                                                         &nbsp;
-                                                        <a href="http://www.google.com/maps?q=<?php echo $location?>" class="startbbs" rel="nofollow external" target="_blank"><?php echo $location?></a>
+                                                        <a href="http://www.google.com/maps?q=@userinfo.Location" class="startbbs" rel="nofollow external" target="_blank">@userinfo.Location</a>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -84,38 +96,41 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class='inner'><p><?php echo $introduction?></p><!--<p>联系方式: <a href="mailto:<?php echo $email?>" class="external mail"><?php echo $email?></a></p>--></div>
+                        <div class='inner'><p>@userinfo.Introduction</p><!--<p>联系方式: <a href="mailto:<?php echo $email?>" class="external mail"><?php echo $email?></a></p>--></div>
                     </div>
                     <div class='box'>
                         <div class='box-header'>
-                            <?php echo $username?>
+                            @userinfo.UserName
                             最近创建的话题
                         </div>
-                        <?php foreach($user_posts as $v){?>
-                        <div class='admin cell topic'>
-                            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
-                                <tr>
-                                    <td valign='middle' width='auto'>
-                                        <span class='bigger'>
-                                            <a href="<?php echo site_url('forum/view/'.$v['fid']);?>" class="startbbs topic"><?php echo $v['title']?></a>
-                                        </span>
-                                        <div class='topic-meta'>
-                                            <a href="<?php echo site_url('forum/flist/'.$v['cid']);?>" class="node"><?php echo $v['cname']?></a>
-                                            &nbsp;&nbsp;•&nbsp;&nbsp;
-                                            <?php echo $this->myclass->friendly_date($v['addtime'])?>
-                                            &nbsp;&nbsp;•&nbsp;&nbsp;
-                                            最后回复来自
-                                            <a href="<?php echo site_url('user/info/'.$v['ruid']);?>" class="startbbs profile_link" title="marschris"><?php echo $v['rname']?></a>
-                                        </div>
-                                    </td>
-                                    <td align='right' valign='middle' width='40'>
-                                        <div class='badge badge-info'><?php echo $v['comments']?></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <?php } ?>
+                        @{
+                            foreach (var item in XBBS.DataProvider.ForumDataProvider.GetUserForums(userinfo.Uid, 10))
+                            {
+                                <div class='admin cell topic'>
+                                    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                                        <tr>
+                                            <td valign='middle' width='auto'>
+                                                <span class='bigger'>
+                                                    <a href="/topic/@item.FId" class="startbbs topic">@item.Title</a>
+                                                </span>
+                                                <div class='topic-meta'>
+                                                    <a href="/node/@item.Cid" class="node">@XBBS.DataProvider.ForumDataProvider.GetCategory(item.Cid).CName</a>
+                                                    &nbsp;&nbsp;•&nbsp;&nbsp;
+                                                    @XBBS.Core.Utils.FriendlyDate(item.AddTime.Value)
+                                                    &nbsp;&nbsp;•&nbsp;&nbsp;
+                                                    最后回复来自
+                                                    <a href="/user/info/@item.Ruid" class="startbbs profile_link" title="marschris">@XBBS.DataProvider.AccountDataProvider.GetUserName(item.Ruid)</a>
+                                                </div>
+                                            </td>
+                                            <td align='right' valign='middle' width='40'>
+                                                <div class='badge badge-info'><?php echo $v['comments']?></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            }
 
+                        }
                         <!--<div class='inner'>
                         <span class='chevron'>»</span>
                         <small><a href="/member/admin/topics" class="startbbs"><?php echo $username?> 创建的更多主题</a></small>
@@ -123,28 +138,32 @@
                     </div>
                     <div class='box'>
                         <div class='box-header'>
-                            <?php echo $username?>
+                            @userinfo.UserName
                             最近的回复
                         </div>
-                        <?php foreach($user_comments as $v){?>
-                        <div class='cell comment_header text-muted'>
-                            <div class='pull-right timeago'>
-                                <?php echo $this->myclass->friendly_date($v['replytime'])?>
-                            </div>
-                            回复了
-                            <a href="<?php echo site_url('user/info/'.$v['uid']);?>" class="startbbs profile_link" title="<?php echo $v['username']?>"><?php echo $v['username']?></a>
-                            <?php echo $this->myclass->friendly_date($v['addtime'])?>
-                            <span class='chevron'>›</span>
-                            <a href="<?php echo site_url('forum/view/'.$v['fid']);?>" class="startbbs"><?php echo $v['title']?></a>
-                        </div>
-                        <div class='inner'>
-                            <div class='reply_content'>
-                                <?php echo $v['content']?>
-                            </div>
-                        </div>
-                        <div class='sep5'></div>
-                        <?php } ?>
 
+                        @{
+                            foreach (var item in XBBS.DataProvider.ForumDataProvider.GetUserComment(userinfo.Uid, 10))
+                            {
+                                var forum = XBBS.DataProvider.ForumDataProvider.GetForum(item.FId);
+                                <div class='cell comment_header text-muted'>
+                                    <div class='pull-right timeago'>
+                                        @XBBS.Core.Utils.FriendlyDate(item.Replytime)
+                                    </div>
+                                    回复了
+                                    <a href="/user/info/@item.UId" class="startbbs profile_link" title="@XBBS.DataProvider.AccountDataProvider.GetUserName(item.UId)">@XBBS.DataProvider.AccountDataProvider.GetUserName(item.UId)</a>
+                                    @XBBS.Core.Utils.FriendlyDate(forum.AddTime.Value)
+                                    <span class='chevron'>›</span>
+                                    <a href="/topic/@forum.FId" class="startbbs"> @forum.Title</a>
+                                </div>
+                                <div class='inner'>
+                                    <div class='reply_content'>
+                                        @item.Content
+                                    </div>
+                                </div>
+                                <div class='sep5'></div>
+                            }
+                        }
                     </div>
 
                 </div>

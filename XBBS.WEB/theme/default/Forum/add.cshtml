@@ -1,4 +1,4 @@
-﻿@model XBBS.Models.Forums
+@model XBBS.Models.Forums
 @{
     ViewData["Title"] = "创建";
 
@@ -76,7 +76,6 @@
                                 <div style="margin:0;padding:0;display:inline">
                                     <input name="utf8" type="hidden" value="&#x2713;" />
                                     <input name="uid" type="hidden" value="1" />
-                                    <input name="cid" type="hidden" value="1" />
                                 </div>
                                 <a name='new_topic'></a>
                                 <div class="form-group">
@@ -94,7 +93,7 @@
                                 {
                                     if (ViewBag.NodeId != 0)
                                     {
-                                        <option selected="selected" value="<?php echo $cate['cid']; ?>"><?php echo $cate['cname']?></option>
+                                        <option selected="selected" value="@ViewBag.NodeId">@XBBS.DataProvider.ForumDataProvider.GetCategory((int)ViewBag.NodeId).CName (已选)</option>
                                     }
                                     else
                                     {
@@ -141,10 +140,14 @@
                                 if (ViewBag.Setting["show_editor"] == "off")
                                 {
                                     <li class="pull-right">
-                                        if(ViewBag.Setting("storage_set")=="local"){
-                                        <span id='upload-tip' class="btn btn-default" value="图片/附件">上传图片</span>
-                                        } else {
-                                        <input id="upload_tip" type="button" value="图片/附件" class="btn btn-default">
+                                        @{ if (ViewBag.Setting["storage_set"] == "local")
+                                              {
+                                                <span id='upload-tip' class="btn btn-default" value="图片/附件">上传图片</span>
+                                              }
+                                              else
+                                              {
+                                                <input id="upload_tip" type="button" value="图片/附件" class="btn btn-default">
+                                              }
                                         }
                                     </li>
                                 }
@@ -152,9 +155,7 @@
                                 </ul>
                                 <div class="form-group">
                                     <div class="col-md-12" id="textContain">
-                                        <textarea class="form-control" id="topic_content" name="content" placeholder="话题内容" rows="10">
-                                             
-                                        </textarea>
+                                        <textarea class="form-control" id="topic_content" name="content" placeholder="话题内容" rows="10"></textarea>
                                         <span class="red"><?php echo form_error('content');?></span>
                                         <span class="text-muted" style="float:right">(可直接粘贴链接和图片地址/发代码用&lt;pre&gt;标签)</span>
                                     </div>
@@ -181,7 +182,6 @@
                 <div class='col-xs-12 col-sm-6 col-md-4' id='Rightbar'>
                     @Html.Partial("_right-login")
                     @Html.Partial("_right_ad")
-
                 </div>
             </div>
         </div>

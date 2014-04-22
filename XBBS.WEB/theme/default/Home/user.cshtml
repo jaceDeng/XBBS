@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta content='<?php echo $title?> - ' name='description'>
@@ -21,10 +21,9 @@
                                 <!--888-->
                             </div>
                         </div>
-
                         <div class="cell">
                             <ul class='user_list'>
-                                <?php if($new_users) foreach($new_users as $v){?>
+                                @*<?php if($new_users) foreach($new_users as $v){?>
                                 <li>
                                     <a href="<?php echo site_url('user/info/'.$v['uid']);?>" title="<?php echo $v['username'];?>">
                                         <?php if($v['avatar']){?>
@@ -34,12 +33,10 @@
                                         <?php }?>
                                     </a>
                                 </li>
-                                <?php }?>
+                                <?php }?>*@
                             </ul>
                         </div>
-
                     </div>
-
                     <div class='box'>
                         <div class='box-header'>
                             活跃会员
@@ -50,7 +47,7 @@
 
                         <div class="cell">
                             <ul class='inline user_list'>
-                                <?php if($hot_users) foreach($hot_users as $v){?>
+                                @*<?php if($hot_users) foreach($hot_users as $v){?>
                                 <li>
                                     <a href="<?php echo site_url('user/info/'.$v['uid']);?>" title="<?php echo $v['username'];?>">
                                         <?php if($v['avatar']){?>
@@ -60,7 +57,7 @@
                                         <?php }?>
                                     </a>
                                 </li>
-                                <?php }?>
+                                <?php }?>*@
                             </ul>
                         </div>
                     </div>

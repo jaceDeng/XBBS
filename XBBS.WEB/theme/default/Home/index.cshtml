@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset='UTF-8'>
@@ -38,7 +38,7 @@
                             @{
                                 if (ViewBag.ForumList != null && ViewBag.ForumList.Count > 0)
                                 {
-                                    foreach (var f in ViewBag.ForumList)
+                                    foreach (var f in (List<XBBS.Models.Forums>)ViewBag.ForumList)
                                     {
                                         XBBS.Models.User user = XBBS.DataProvider.AccountDataProvider.GetUser((int)f.Uid);
                                         <div class="cell topic">
@@ -46,7 +46,7 @@
                                                 <a href="/user/info/@user.Uid" class="profile_link" title="@user.Uid">
                                                     @{  if (!string.IsNullOrEmpty(user.Avatar))
                                                       {
-                                                        <img alt="@user.UserName medium avatar" class="medium_avatar" src="@Url.Content("~/" + user.Avatar)" />
+                                                        <img alt="@user.UserName medium avatar" class="medium_avatar" src="@(user.Avatar)/default.jpg" />
                                                       }
                                                       else
                                                       {
@@ -57,7 +57,7 @@
                                             </div>
                                             <div class='item_title'>
                                                 <div class='pull-right'>
-                                                    <div class='badge badge-info'><a href="<?php echo site_url($v['view_url'].'#reply');?>">@f.Comments</a></div>
+                                                    <div class='badge badge-info'><a href="/topic/@f.FId#reply">@f.Comments</a></div>
                                                 </div>
                                                 <h2 class='topic_title'>
                                                     <a href="/topic/@f.FId" class="startbbs topic">@f.Title</a>
@@ -65,18 +65,18 @@
                                                      {<span class="badge badge-info">置顶</span>} }
                                                 </h2>
                                                 <div class='topic-meta'>
-                                                    <a href="<?php echo site_url($v['flist_url']);?>" class="node">西南</a>
+                                                    <a href="/node/@f.Cid" class="node">@XBBS.DataProvider.ForumDataProvider.GetCategory(f.Cid).CName</a>
                                                     <span class='text-muted'>•</span>
                                                     <a href="/user/info/@f.Uid" class="dark startbbs profile_link" title="<?php echo $v['username']?>"> @XBBS.DataProvider.AccountDataProvider.GetUser((int)f.Uid).UserName</a>
                                                     <span class='text-muted'>•</span>
                                                     @*有好的日期转换*@
-                                                    @XBBS.Core.Utils.FriendlyDate(f.UpdateTime)
+                                                    @XBBS.Core.Utils.FriendlyDate(f.UpdateTime.Value)
                                                     <span class='text-muted'>•</span>
                                                     @{
                                         if (f.Ruid != null)
                                         {
                                             @:最后回复来自
-                                                        <a href="/user/info/@f.Ruid" class="startbbs profile_link" title="<?php echo $v['rname']?>">rname</a>
+    <a href="/user/info/@f.Ruid" class="startbbs profile_link" title="@XBBS.DataProvider.AccountDataProvider.GetUser(f.Ruid.Value).UserName">@XBBS.DataProvider.AccountDataProvider.GetUser(f.Ruid.Value).UserName</a>
 
                                         }
                                         else

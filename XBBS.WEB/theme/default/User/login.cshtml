@@ -1,4 +1,4 @@
-﻿@model XBBS.Models.User
+@model XBBS.Models.User
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +28,7 @@
                                     {
                                         foreach (var error in item.Value.Errors)
                                         {
-                                            sb.Append(error.ErrorMessage);
-
+                                            sb.Append(error.ErrorMessage); 
                                         }
                                     }
                                     <div class="alert alert-danger alert-dismissable">

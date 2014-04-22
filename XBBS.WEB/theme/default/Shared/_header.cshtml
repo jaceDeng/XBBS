@@ -1,4 +1,4 @@
-﻿@helper NavActive(string txt, string action, string controler)
+@helper NavActive(string txt, string action, string controler)
 {
     if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == controler.ToUpper() && ViewContext.RouteData.Values["action"].ToString().ToUpper() == action.ToUpper())
     {
@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><span class='green'>BBS</span></a>
+                <a class="navbar-brand" href="/">Jexus<span class='green'>BBS</span></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
