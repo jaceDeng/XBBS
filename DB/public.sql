@@ -1,19 +1,4 @@
-/*
-Navicat PGSQL Data Transfer
-
-Source Server         : LotterySimulator
-Source Server Version : 90112
-Source Host           : www.olexe.cn:5432
-Source Database       : JexusBBS
-Source Schema         : public
-
-Target Server Type    : PGSQL
-Target Server Version : 90112
-File Encoding         : 65001
-
-Date: 2014-04-22 10:21:19
-*/
-
+﻿ 
 
 -- ----------------------------
 -- Sequence structure for jexus_comments_seq
@@ -99,13 +84,7 @@ WITH (OIDS=FALSE)
 
 -- ----------------------------
 -- Records of jexus_comments
--- ----------------------------
-INSERT INTO "public"."jexus_comments" VALUES ('7', '10', '5', '213213', '2014-03-07 23:32:08.922093+08');
-INSERT INTO "public"."jexus_comments" VALUES ('8', '10', '5', '3321', '2014-03-07 23:32:29.066297+08');
-INSERT INTO "public"."jexus_comments" VALUES ('9', '10', '5', '213213123', '2014-03-07 23:34:09.322558+08');
-INSERT INTO "public"."jexus_comments" VALUES ('10', '10', '5', '老大出品必属精品  支持宇内老大', '2014-04-01 17:53:56.558781+08');
-INSERT INTO "public"."jexus_comments" VALUES ('11', '10', '5', '123213213', '2014-04-01 17:59:42.310599+08');
-INSERT INTO "public"."jexus_comments" VALUES ('12', '10', '5', '123123', '2014-04-01 18:05:52.58521+08');
+-- ---------------------------- 
 
 -- ----------------------------
 -- Table structure for jexus_favorites
@@ -153,21 +132,7 @@ WITH (OIDS=FALSE)
 ;
 
 -- ----------------------------
--- Records of jexus_forums
--- ----------------------------
-INSERT INTO "public"."jexus_forums" VALUES ('10', '2', '5', '5', 'Jexus简介', null, 'Jexus&nbsp;web&nbsp;server&nbsp;for&nbsp;linux&nbsp;是一款基于.NET兼容环境，运行于Linux/unix操作系统之上，以支持ASP.NET为核心功能的高性能WEB服务器。<br />
-Jexus&nbsp;V5.1有如下功能特点：<br />
-01、支持ASP.NET。这是Jexus的核心功能。无论是稳定性、易用性还是并发承载能力、并行处理速度，Jexus对ASP.NET的支持都是非常优秀的；<br />
-02、支持Fast-CGI。通Fast-CGI，Jexus能支持包括PHP在内的所有拥有Fast-CGI服务功能的WEB应用；<br />
-03、具备基于正则表达式的强大的URL重写功能；<br />
-04、具有强劲的反向代理功能。支持多目标负载均衡，支持本地网站与远程网站无缝整合；<br />
-05、拥有强大的流媒体支持能力，支持FLV/F4V视频文件拖动播放，支持微软平滑流媒体技术；<br />
-06、支持“服务器推送”技术，配备了相应的服务器端、客户端开发接口，是开发现代WEB应用的利器；<br />
-07、具备可控的“ASP.NET前置缓存”，能最大限度地提高ASP.NET网站的承载能力和响应速度；<br />
-08、支持Https，具有SSL加密数据安全传输能力；<br />
-09、具有基础而实用的入侵检测功能，能自动终止已被识别的非法请求；<br />
-10、安装部署非常简便，操作使用极为简单。', '2014-03-07 23:04:53.481013+08', '2014-03-07 23:04:53.481017+08', '2014-04-01 18:05:52.64115+08', '121', '8', null, null, '0', '0', '0');
-
+-- Records of jexus_forums 
 -- ----------------------------
 -- Table structure for jexus_links
 -- ----------------------------
@@ -370,15 +335,7 @@ WITH (OIDS=FALSE)
 -- ----------------------------
 -- Records of jexus_users
 -- ----------------------------
-INSERT INTO "public"."jexus_users" VALUES ('4', 'admin', '34F85CA80EC353D3052B8A2D3973A0C5', '                                ', 'djs@olexe.cn', null, null, '100', ' ', '0', '0', '0', '0', '2014-03-07 20:55:42.548339+08', null, null, ' ', '0', '1', '222.209.110.12 ', ' ', null, ' ', '1');
-INSERT INTO "public"."jexus_users" VALUES ('5', '小白', '34F85CA80EC353D3052B8A2D3973A0C5', '                                ', 'djs@olexe.cn', '/uploads/avatar/5', null, null, null, null, null, null, '0', '2014-03-07 23:00:22.889554+08', null, null, null, '2', '3', '222.209.110.12 ', null, null, null, '1');
-INSERT INTO "public"."jexus_users" VALUES ('6', 'admin', '34F85CA80EC353D3052B8A2D3973A0C5', '                                ', 'djs@olexe.cn', '/uploads/avatar', null, null, null, null, null, null, '0', '2014-04-02 09:08:07.123937+08', null, null, null, '2', '3', '118.122.94.212 ', null, null, null, '1');
-INSERT INTO "public"."jexus_users" VALUES ('7', 'test', '34F85CA80EC353D3052B8A2D3973A0C5', '                                ', 'abc@olexe.cn', '/uploads/avatar', null, null, null, null, null, null, '0', '2014-04-02 09:17:58.007583+08', null, null, null, '2', '3', '::1            ', null, null, null, '1');
-INSERT INTO "public"."jexus_users" VALUES ('8', '黄鹤', '25D55AD283AA400AF464C76D713C07AD', '                                ', 'hd@qq.com', '/uploads/avatar', null, null, null, null, null, null, '0', '2014-04-03 22:44:17.088248+08', null, null, null, '2', '3', '222.210.219.180', null, null, null, '1');
-INSERT INTO "public"."jexus_users" VALUES ('9', 'test2', '25D55AD283AA400AF464C76D713C07AD', '                                ', '13@qq.com', '/uploads/avatar', null, null, null, null, null, null, '0', '2014-04-03 22:45:07.238723+08', null, null, null, '2', '3', '222.210.219.180', null, null, null, '1');
-INSERT INTO "public"."jexus_users" VALUES ('10', 'test3', '25D55AD283AA400AF464C76D713C07AD', '                                ', 'da@qc.com', '/uploads/avatar', null, null, null, null, null, null, '0', '2014-04-03 22:45:48.286377+08', null, null, null, '2', '3', '222.210.219.180', null, null, null, '1');
-INSERT INTO "public"."jexus_users" VALUES ('11', 'kevin', '92D7DDD2A010C59511DC2905B7E14F64', '                                ', 'xklqx@qq.com', '/uploads/avatar', null, null, null, null, null, null, '0', '2014-04-22 10:12:52.221635+08', null, null, null, '2', '3', '114.250.80.191 ', null, null, null, '1');
-INSERT INTO "public"."jexus_users" VALUES ('12', 'WanAn', '9DD7B150657EBED4D042448B897512DD', '                                ', '841228093@qq.com', '/uploads/avatar', null, null, null, null, null, null, '0', '2014-04-22 10:12:52.94406+08', null, null, null, '2', '3', '113.109.186.68 ', null, null, null, '1');
+INSERT INTO "public"."jexus_users" VALUES ('4', 'admin', '34F85CA80EC353D3052B8A2D3973A0C5', '                                ', 'abc@xx.com', null, null, '100', ' ', '0', '0', '0', '0', '2014-03-07 20:55:42.548339+08', null, null, ' ', '0', '1', '222.209.110.12 ', ' ', null, ' ', '1'); 
 
 -- ----------------------------
 -- Alter Sequences Owned By 
