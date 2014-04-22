@@ -6,7 +6,7 @@ using System.Text;
 
 namespace XBBS.Models
 {
-    [TableName("stb_categories")]
+    [TableName("jexus_categories")]
     [PrimaryKey("cid", autoIncrement = false)]
     public class Category
     {
@@ -131,6 +131,19 @@ namespace XBBS.Models
             return false;
         }
 
+        [PetaPoco.ResultColumn()]
+        public int TotalForumToday
+        {
+            get;
+            set;
+        }
+
+        [PetaPoco.ResultColumn()]
+        public int TotalForum
+        {
+            get;
+            set;
+        }
         public static List<XBBS.Models.Category> GetCatList(List<XBBS.Models.Category> listCategory, int pid)
         {
             List<XBBS.Models.Category> list = new List<XBBS.Models.Category>();

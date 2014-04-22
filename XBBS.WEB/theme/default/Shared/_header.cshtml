@@ -1,4 +1,4 @@
-@helper NavActive(string txt, string action, string controler)
+﻿@helper NavActive(string txt, string action, string controler)
 {
     if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == controler.ToUpper() && ViewContext.RouteData.Values["action"].ToString().ToUpper() == action.ToUpper())
     {

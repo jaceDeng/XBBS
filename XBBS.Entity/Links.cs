@@ -6,7 +6,7 @@ using System.Text;
 namespace XBBS.Models
 {
 
-    [PetaPoco.TableName("stb_links")]
+    [PetaPoco.TableName("jexus_links")]
     [PetaPoco.PrimaryKey("id")]
     public class Links
     {

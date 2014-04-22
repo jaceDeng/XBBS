@@ -24,6 +24,7 @@ namespace XBBS.WEB.Controllers
         [HttpPost]
         public ActionResult Reg(XBBS.Models.User user)
         {
+            //   return Redirect("/");
             if (System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 return Redirect("/");
@@ -123,6 +124,8 @@ namespace XBBS.WEB.Controllers
 
         public ActionResult Info(int id)
         {
+
+            ViewBag.UserInfo = XBBS.DataProvider.AccountDataProvider.GetUser(id);
             return View();
 
         }
@@ -138,8 +141,6 @@ namespace XBBS.WEB.Controllers
                 codeW = w;
                 codeH = h;
             }
-
-
             int fontSize = 26;
             string chkCode = string.Empty;
             //颜色列表，用于验证码、噪线、噪点 
@@ -157,8 +158,8 @@ namespace XBBS.WEB.Controllers
             //写入Session
             Session["ValidateCode"] = chkCode;
             //创建画布
-            Bitmap bmp = new Bitmap(codeW, codeH);
-            Graphics g = Graphics.FromImage(bmp);
+            Bitmap bmpTmp = new Bitmap(100, 40);
+            Graphics g = Graphics.FromImage(bmpTmp);
             g.Clear(Color.White);
             Color clFont = color[rnd.Next(color.Length)];
             ////画噪线 
@@ -179,6 +180,8 @@ namespace XBBS.WEB.Controllers
                 g.DrawString(chkCode[i].ToString(), ft, new SolidBrush(clFont), (float)i * 18 + 2, (float)0);
             }
 
+            Bitmap bmp = new Bitmap(bmpTmp, codeW, codeH);
+            // bmpTmp.Save(bmp);
             //清除该页输出缓存，设置该页无缓存 
             Response.Buffer = true;
             Response.ExpiresAbsolute = System.DateTime.Now.AddMilliseconds(0);
@@ -189,19 +192,20 @@ namespace XBBS.WEB.Controllers
             MemoryStream ms = new MemoryStream();
             try
             {
-                bmp.Save(ms, ImageFormat.Png);
-
+                bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 return File(ms.ToArray(), @"image/Png");
 
             }
             finally
             {
                 //显式释放资源 
+                bmpTmp.Dispose();
                 bmp.Dispose();
                 g.Dispose();
             }
 
 
         }
+
     }
 }

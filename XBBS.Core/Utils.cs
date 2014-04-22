@@ -24,6 +24,13 @@ namespace XBBS.Core
         }
 
 
+        public static string SubString(string txt, int len)
+        {
+            if (string.IsNullOrEmpty(txt))
+                return "";
+            return txt.Length > len ? txt.Substring(0, len) : txt;
+        }
+
 
         /// <summary>
         /// 格式化日期友好

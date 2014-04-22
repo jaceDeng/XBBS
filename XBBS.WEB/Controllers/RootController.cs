@@ -31,10 +31,18 @@ namespace XBBS.WEB.Controllers
                 }
                 else
                 {
+
                     System.Web.HttpContext.Current.Session["User"] = XBBS.DataProvider.AccountDataProvider.GetUser(System.Web.HttpContext.Current.User.Identity.Name);
-                    ViewBag.User = System.Web.HttpContext.Current.Session["User"] as Models.User;
-                    ViewData["GroupName"] = XBBS.DataProvider.AccountDataProvider.GetUserGroup(ViewBag.User.Gid).GroupName;
- 
+                    if (System.Web.HttpContext.Current.Session["User"] == null)
+                    {
+                        System.Web.Security.FormsAuthentication.SignOut();
+                    }
+                    else
+                    {
+                        ViewBag.User = System.Web.HttpContext.Current.Session["User"] as Models.User;
+                        ViewData["GroupName"] = XBBS.DataProvider.AccountDataProvider.GetUserGroup(ViewBag.User.Gid).GroupName;
+                         
+                    } 
                 }
             }
             ViewBag.Pages = XBBS.DataProvider.CommonDataProvider.GetAllPages();

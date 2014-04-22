@@ -11,13 +11,14 @@ namespace XBBS.WEB.Controllers
 {
     public class HomeController : RootController
     {
-
+        const int PER = 17;
 
 
         public ActionResult Index()
-        { 
+        {
             ViewBag.Category = XBBS.DataProvider.ForumDataProvider.GetAllCategory();
-            ViewBag.ForumList = XBBS.DataProvider.ForumDataProvider.GetForums(1);
+            ViewBag.ForumList = XBBS.DataProvider.ForumDataProvider.GetLastForums(PER);
+            ViewBag.Targs = XBBS.DataProvider.ForumDataProvider.GetAllTarg();
             return View();
         }
 
@@ -39,8 +40,9 @@ namespace XBBS.WEB.Controllers
         /// <returns></returns>
         public ActionResult Section()
         {
+            ViewData["TotalFourms"] = XBBS.DataProvider.ForumDataProvider.TotalForum();
             ViewBag.Category = XBBS.DataProvider.ForumDataProvider.GetAllCategory();
-            ViewBag.ForumList = XBBS.DataProvider.ForumDataProvider.GetForums(1);        
+            ViewBag.ForumList = XBBS.DataProvider.ForumDataProvider.GetLastForums(PER);
             return View();
         }
 
@@ -57,17 +59,10 @@ namespace XBBS.WEB.Controllers
 
 
 
-        public ActionResult GetMore(int page)
+        public ActionResult GetMore(int id)
         {
-            var m = new
-            {
-                a = "123",
-                b
-                    = "1111"
-            };
-
-            return Json(m);
-
+            ViewBag.ForumList = XBBS.DataProvider.ForumDataProvider.GetLastForums(PER, PER * (id - 1));
+            return View();
         }
     }
 }

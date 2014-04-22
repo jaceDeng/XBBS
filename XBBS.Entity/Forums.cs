@@ -5,7 +5,7 @@ using System.Text;
 
 namespace XBBS.Models
 {
-    [PetaPoco.TableName("stb_forums")]
+    [PetaPoco.TableName("jexus_forums")]
     [PetaPoco.PrimaryKey("fid")]
     /// <summary>
     /// 帖子

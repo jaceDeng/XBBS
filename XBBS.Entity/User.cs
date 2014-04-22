@@ -6,7 +6,7 @@ using System.Text;
 
 namespace XBBS.Models
 {
-    [PetaPoco.TableName("stb_users")]
+    [PetaPoco.TableName("jexus_users")]
     [PetaPoco.PrimaryKey("uid", autoIncrement = true)]
     public class User
     {
@@ -43,7 +43,7 @@ namespace XBBS.Models
             get;
             set;
         }
-
+        private string _avatar;
 
         /// <summary>
         /// 
@@ -51,8 +51,18 @@ namespace XBBS.Models
         [PetaPoco.Column("avatar")]
         public string Avatar
         {
-            get;
-            set;
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_avatar))
+                {
+                    return "/uploads/avatar";
+                }
+                return _avatar;
+            }
+            set
+            {
+                _avatar = value;
+            }
         }
 
         /// <summary>

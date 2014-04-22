@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset='UTF-8'>
@@ -9,15 +9,11 @@
     @Html.Partial("_header-meta")
 </head>
 <body>
-    @{
-        @Html.Partial("_header")
-    }
+    @Html.Partial("_header")
     <div id="wrap">
         <div class="container" id="page-main">
             <div class="row">
-
                 <div class='col-xs-12 col-sm-6 col-md-8'>
-
                     <div class='box' id='topics_index'>
                         <div align='left' class='cell'>
                             <div class='pull-right marketing'>
@@ -76,7 +72,7 @@
                                         if (f.Ruid != null)
                                         {
                                             @:最后回复来自
-    <a href="/user/info/@f.Ruid" class="startbbs profile_link" title="@XBBS.DataProvider.AccountDataProvider.GetUser(f.Ruid.Value).UserName">@XBBS.DataProvider.AccountDataProvider.GetUser(f.Ruid.Value).UserName</a>
+                                                        <a href="/user/info/@f.Ruid" class="startbbs profile_link" title="@XBBS.DataProvider.AccountDataProvider.GetUser(f.Ruid.Value).UserName">@XBBS.DataProvider.AccountDataProvider.GetUser(f.Ruid.Value).UserName</a>
 
                                         }
                                         else
@@ -99,7 +95,7 @@
                                 }
                             }
 
-                        </span><!--infolist-->
+                        </span> 
 
                         <div class='inner'>
                             <div class='pull-right'>

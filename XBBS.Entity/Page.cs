@@ -6,7 +6,7 @@ using System.Text;
 namespace XBBS.Models
 {
 
-    [PetaPoco.TableName("stb_page")]
+    [PetaPoco.TableName("jexus_page")]
     [PetaPoco.PrimaryKey("pid")]
     public class Page
     {

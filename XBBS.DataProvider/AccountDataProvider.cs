@@ -8,7 +8,24 @@ namespace XBBS.DataProvider
 {
     public static class AccountDataProvider
     {
+        public static void UpdateUser(Models.User u)
+        {
+            using (PetaPoco.Database db = new PetaPoco.Database("sqlconnection"))
+            {
+                db.Save(u);
+            }
 
+        }
+
+
+        public static string GetUserName(int? uid)
+        {
+            if (uid.HasValue)
+            {
+                return GetUser(uid.Value).UserName;
+            }
+            return "";
+        }
         /// <summary>
         /// 根据登录名
         /// </summary>

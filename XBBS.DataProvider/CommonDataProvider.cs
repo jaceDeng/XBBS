@@ -10,6 +10,13 @@ namespace XBBS.DataProvider
     {
 
 
+        public static List<string> GetAllTag()
+        {
+            using (PetaPoco.Database db = new PetaPoco.Database("sqlconnection"))
+            {
+                return db.Query<string>("SELECT tag_title  FROM  jexus_tags  ORDER BY tag_title DESC").ToList();
+            }
+        }
         /// <summary>
         /// 获取所有的
         /// </summary>
