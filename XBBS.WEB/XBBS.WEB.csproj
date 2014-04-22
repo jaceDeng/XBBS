@@ -257,10 +257,21 @@
     <Content Include="static\common\js\main.js" />
     <Content Include="static\common\js\qiniu.js" />
     <Content Include="static\common\js\topic.js" />
+    <Content Include="uploads\avatar\12\avatar_large.jpg" />
+    <Content Include="uploads\avatar\12\avatar_small.jpg" />
+    <Content Include="uploads\avatar\12\default.jpg" />
+    <Content Include="uploads\avatar\5\avatar_large.jpg" />
+    <Content Include="uploads\avatar\5\avatar_small.jpg" />
+    <Content Include="uploads\avatar\5\default.jpg" />
+    <Content Include="uploads\avatar\6\avatar_large.jpg" />
+    <Content Include="uploads\avatar\6\avatar_small.jpg" />
+    <Content Include="uploads\avatar\6\default.jpg" />
     <Content Include="uploads\avatar\avatar_large.jpg" />
     <Content Include="uploads\avatar\avatar_small.jpg" />
     <Content Include="uploads\avatar\default.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -355,19 +366,19 @@
     <Content Include="theme\default\Settings\profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="theme\default\admin\dashboard.cshtml" />
+    <Content Include="theme\default\Admin\dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="theme\default\admin\_footer.cshtml" />
+    <Content Include="theme\default\Admin\_footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="theme\default\admin\_header-meta.cshtml" />
+    <Content Include="theme\default\Admin\_header-meta.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="theme\default\admin\_header.cshtml" />
+    <Content Include="theme\default\Admin\_header.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="theme\default\admin\_leftbar.cshtml" />
+    <Content Include="theme\default\Admin\_leftbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="theme\default\User\info.cshtml" />
@@ -383,6 +394,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="theme\default\Shared\_right-related_forum.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Home\getmore.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Forum\edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Forum\node.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="theme\default\Forum\comment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\本地发布.pubxml" />
+    <Content Include="theme\default\Settings\password.cshtml" />
+    <Content Include="theme\default\Forum\tag.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -402,7 +430,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>40912</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:40707/</IISUrl>
+          <IISUrl>http://localhost:40708/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

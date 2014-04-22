@@ -3,8 +3,3 @@ F:\SourceCode\XBBS\XBBS.Entity\bin\Debug\XBBS.Models.dll
 F:\SourceCode\XBBS\XBBS.Entity\bin\Debug\XBBS.Models.pdb
 F:\SourceCode\XBBS\XBBS.Entity\obj\Debug\XBBS.Models.dll
 F:\SourceCode\XBBS\XBBS.Entity\obj\Debug\XBBS.Models.pdb
-E:\HouseWork\XBBS\XBBS.Entity\bin\Debug\XBBS.Models.dll
-E:\HouseWork\XBBS\XBBS.Entity\bin\Debug\XBBS.Models.pdb
-E:\HouseWork\XBBS\XBBS.Entity\obj\Debug\XBBS.Models.csprojResolveAssemblyReference.cache
-E:\HouseWork\XBBS\XBBS.Entity\obj\Debug\XBBS.Models.dll
-E:\HouseWork\XBBS\XBBS.Entity\obj\Debug\XBBS.Models.pdb

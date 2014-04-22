@@ -16,11 +16,22 @@ namespace XBBS.WEB.Controllers
         {
 
             if (Request.Files.Count > 0)
-            { 
-           
+            {
+                var user = System.Web.HttpContext.Current.Session["User"] as Models.User;
+
+                bool b = Core.Utils.ThumImage(Request.Files["userfile"].InputStream, Server.MapPath("~/uploads/avatar/" + user.Uid.ToString()));
+
+                if (b)
+                {
+                    user.Avatar = "/uploads/avatar/" + user.Uid.ToString();
+                    DataProvider.AccountDataProvider.UpdateUser(user);
+                }
+                ViewBag.UploadState = b;
             }
             return View();
         }
+
+
 
         [Authorize]
         [HttpGet]
@@ -32,7 +43,7 @@ namespace XBBS.WEB.Controllers
 
         [Authorize]
         [HttpPost]
-        public new ActionResult Profile(string email,string homepage,string location,string qq,string signature,string introduction)
+        public new ActionResult Profile(string email, string homepage, string location, string qq, string signature, string introduction)
         {
             Models.User user = System.Web.HttpContext.Current.Session["User"] as Models.User;
             user.Email = email;

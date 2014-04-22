@@ -7,6 +7,16 @@
     <meta content='width=device-width, initial-scale=1.0' name='viewport'>
     <title>@ViewData["Title"] - @ViewBag.Setting["site_name"]</title>
     @Html.Partial("_header-meta")
+    @{
+        if (ViewBag.UploadState != null && (bool)ViewBag.UploadState)
+        {
+            <script type="text/javascript"> alert("上传成功")</script>
+        }
+        else if (ViewBag.UploadState != null && !(bool)ViewBag.UploadState)
+        {
+            <script type="text/javascript"> alert("上传失败")</script>
+        }
+    }
 </head>
 <body id="startbbs">
 
@@ -57,7 +67,7 @@
                                             </p>
 
                                             <p class="alert alert-info">
-                                                <strong>注意</strong> 支持 500k 以内的 PNG / GIF / JPG 图片文件作为头像，推荐使用正方形的图片以获得最佳效果。
+                                                <strong>注意</strong> 支持 500k 以内的 PNG / GIF / JPG 图片文件作为头且长宽不得小于100，推荐使用正方形的图片以获得最佳效果。
                                             </p>
                                         </div>
                                     </div>
