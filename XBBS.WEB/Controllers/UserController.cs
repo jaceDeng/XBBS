@@ -68,7 +68,10 @@ namespace XBBS.WEB.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-
+            if (!string.IsNullOrEmpty(Request.QueryString["openid"]))
+            {
+                ViewBag.Title = "请绑定存在的账号";
+            }
             return View();
         }
 
@@ -99,6 +102,13 @@ namespace XBBS.WEB.Controllers
                     //登录成功
                     if (XBBS.Core.Utils.MD5(Password) == user.Password)
                     {
+
+                        if  (!string.IsNullOrEmpty(Request.QueryString["openid"]))
+                        {
+                            user.Openid = Request.QueryString["openid"];
+                            DataProvider.AccountDataProvider.UpdateUser(user);
+
+                        }
                         System.Web.HttpContext.Current.Session["User"] = user;
                         System.Web.Security.FormsAuthentication.SetAuthCookie(UserName, false);
                         string returnUrl = Request["ReturnUrl"];
