@@ -18,7 +18,7 @@
                 <div class='col-xs-12 col-sm-6 col-md-8'>
 
                     <div class='box'>
-                        <div class='cell'><a href="<?php echo site_url()?>" class="startbbs">@ViewBag.Setting["site_name"]</a> <span class="chevron">&nbsp;›&nbsp;</span> 登入</div>
+                        <div class='cell'><a href="<?php echo site_url()?>" class="startbbs">@ViewBag.Setting["site_name"]</a> <span class="chevron">&nbsp;›&nbsp;</span> 登入@(ViewBag.Title)</div>
                         <div class='inner'>
                             @{
                                 if (ViewData.ModelState.Count > 0)
@@ -28,7 +28,7 @@
                                     {
                                         foreach (var error in item.Value.Errors)
                                         {
-                                            sb.Append(error.ErrorMessage); 
+                                            sb.Append(error.ErrorMessage);
                                         }
                                     }
                                     <div class="alert alert-danger alert-dismissable">
@@ -65,8 +65,7 @@
                                     </div>
                                 </div>
                                 if (ViewBag.Setting["show_captcha"] == "on")
-                                {
-
+                                { 
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label" for="captcha_code">验证码</label>
                                         <div class="col-sm-4">
@@ -92,7 +91,7 @@
                                 <div class='form-group'>
                                     <div class="col-sm-offset-3 col-sm-9">
                                         <button type="submit" name="commit" class="btn btn-primary">登入</button>
-                                        <a href="<?php echo site_url('user/findpwd');?>" class="btn btn-default" role="button">找回密码</a>
+                                        <a href="~/user/findpwd" class="btn btn-default" role="button">找回密码</a>
                                     </div>
                                 </div>
 
