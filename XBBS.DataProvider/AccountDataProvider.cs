@@ -18,6 +18,14 @@ namespace XBBS.DataProvider
         }
 
 
+        public static User GetUserByOpenID(string openid)
+        {
+            using (PetaPoco.Database db = new PetaPoco.Database("sqlconnection"))
+            {
+                return db.SingleOrDefault<Models.User>("WHERE openid=@0 ", openid);
+            }
+        }
+
         public static string GetUserName(int? uid)
         {
             if (uid.HasValue)
